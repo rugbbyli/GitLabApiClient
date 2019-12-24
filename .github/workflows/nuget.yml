@@ -1,0 +1,22 @@
+name: Package
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: nuget publish
+      run: |
+        dotnet pack --configuration Release
+        dotnet nuget push "bin/Release/GitLabApiClient.1.0.0.nupkg" --source "github"
