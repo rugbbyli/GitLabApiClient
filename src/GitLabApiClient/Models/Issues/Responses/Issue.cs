@@ -57,5 +57,11 @@ namespace GitLabApiClient.Models.Issues.Responses
 
         [JsonProperty("time_stats")]
         public IssueTimeStatistic TimeStats { get; set; }
+        
+        [JsonProperty("upvotes")]
+        public int Upvotes { get; set; }
+        
+        [JsonProperty("downvotes")]
+        public int Downvotes { get; set; }
     }
 }
